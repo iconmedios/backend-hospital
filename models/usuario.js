@@ -12,7 +12,7 @@ var rolesValidos = {
 
 }
 
-// 1. crear los campos de nuestro modelo 
+// 1. crear los campos de nuestro modelo // login
 var usuarioSchema = new Schema({
 
     nombre: { type: String, required: [true, 'Nombre requerido'] },
@@ -20,6 +20,8 @@ var usuarioSchema = new Schema({
     password: { type: String, required: [true, 'Contraseña requeridA'] },
     img: { type: String, required: false },
     role: { type: String, required: true, default: 'USER_ROLE', enum: rolesValidos},
+    google: { type: Boolean, default: false }
+
 
 
 });

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Goole Sing in demo</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- 1. Conectar el id de cliente -->
+    <meta name="google-signin-client_id"
+        content="822861854663-n90jm7kj23k604ndbt2g6orsf6cmk8k9.apps.googleusercontent.com">
+
+
+</head>
+
+<body>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <!-- 4. Boton para salir de google y js abajo     -->
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+    </script>
+    
+    
+    
+    <script>
+        // 2. Cargar codigo para obtener los datos de usuario
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+
+            // 3. Crear variable para enviar token el lugar de id
+            var id_token = googleUser.getAuthResponse().id_token;
+            // probar token
+            console.log('token', id_token)
+
+        }
+    </script>
+</body>
+
+</html>
